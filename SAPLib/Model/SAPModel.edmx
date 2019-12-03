@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DataFromSap.dbo.View_MBEW”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_MBEW">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="14" />
+          <Property Name="MATNR" Type="varchar" MaxLength="50" />
+          <Property Name="BWKEY" Type="varchar" MaxLength="50" />
+          <Property Name="BWTAR" Type="varchar" MaxLength="50" />
+          <Property Name="STPRS" Type="varchar" MaxLength="50" />
+          <Property Name="VERPR" Type="varchar" MaxLength="50" />
+          <Property Name="ZPLP1" Type="varchar" MaxLength="50" />
+          <Property Name="VPRSV" Type="varchar" MaxLength="50" />
+          <Property Name="PEINH" Type="varchar" MaxLength="50" />
+          <Property Name="LVORM" Type="varchar" MaxLength="50" />
+          <Property Name="ADD1" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DataFromSap.dbo.View_T_SAP_PP_MaterialMove”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_T_SAP_PP_MaterialMove">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="14" />
+          <Property Name="MBLNR" Type="varchar" MaxLength="255" />
+          <Property Name="MJAHR" Type="varchar" MaxLength="255" />
+          <Property Name="BWART" Type="varchar" MaxLength="255" />
+          <Property Name="MATNR" Type="varchar" MaxLength="255" />
+          <Property Name="MAKTX" Type="varchar(max)" />
+          <Property Name="BISMT" Type="varchar" MaxLength="255" />
+          <Property Name="MTART" Type="varchar" MaxLength="255" />
+          <Property Name="GROES" Type="varchar(max)" />
+          <Property Name="MVGR2" Type="varchar" MaxLength="255" />
+          <Property Name="MATKL" Type="varchar" MaxLength="255" />
+          <Property Name="NTGEW" Type="varchar" MaxLength="255" />
+          <Property Name="GEWEI" Type="varchar" MaxLength="255" />
+          <Property Name="WERKS" Type="varchar" MaxLength="255" />
+          <Property Name="LGORT" Type="varchar" MaxLength="255" />
+          <Property Name="CHARG" Type="varchar" MaxLength="255" />
+          <Property Name="MENGE" Type="varchar" MaxLength="255" />
+          <Property Name="MEINS" Type="varchar" MaxLength="255" />
+          <Property Name="DMBTR" Type="varchar" MaxLength="255" />
+          <Property Name="PARGB" Type="varchar" MaxLength="255" />
+          <Property Name="AUFNR" Type="varchar" MaxLength="255" />
+          <Property Name="EBELN" Type="varchar" MaxLength="255" />
+          <Property Name="BUDAT_MKPF" Type="datetime" />
+          <Property Name="SAKTO" Type="varchar" MaxLength="255" />
+          <Property Name="KOSTL" Type="varchar" MaxLength="255" />
+          <Property Name="DISPO" Type="varchar" MaxLength="255" />
+          <Property Name="WRKST" Type="varchar" MaxLength="255" />
+          <Property Name="ZEINR" Type="varchar" MaxLength="255" />
+          <Property Name="BRGEW" Type="varchar" MaxLength="255" />
+          <Property Name="SMBLN" Type="varchar" MaxLength="255" />
+          <Property Name="ADD0" Type="varchar" MaxLength="255" />
+          <Property Name="ADD1" Type="varchar" MaxLength="255" />
+          <Property Name="ADD2" Type="varchar" MaxLength="255" />
+          <Property Name="ADD3" Type="varchar" MaxLength="255" />
+          <Property Name="ADD4" Type="varchar" MaxLength="255" />
+          <Property Name="ADD5" Type="varchar" MaxLength="255" />
+          <Property Name="ADD6" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DataFromSap.dbo.View_T_SAP_PP_ProductOrderHeader”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_T_SAP_PP_ProductOrderHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PHAS3" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="14" />
+          <Property Name="AUFNR" Type="varchar" MaxLength="50" />
+          <Property Name="AUART" Type="varchar" MaxLength="50" />
+          <Property Name="AUTYP" Type="varchar" MaxLength="50" />
+          <Property Name="REFNR" Type="varchar" MaxLength="50" />
+          <Property Name="ERDAT" Type="varchar" MaxLength="50" />
+          <Property Name="AEDAT" Type="varchar" MaxLength="50" />
+          <Property Name="MATNR" Type="varchar" MaxLength="50" />
+          <Property Name="KTEXT" Type="varchar(max)" />
+          <Property Name="LTEXT" Type="varchar" MaxLength="50" />
+          <Property Name="BUKRS" Type="varchar" MaxLength="50" />
+          <Property Name="WERKS" Type="varchar" MaxLength="50" />
+          <Property Name="ERNAM" Type="varchar" MaxLength="50" />
+          <Property Name="GSBER" Type="varchar" MaxLength="50" />
+          <Property Name="GAMNG" Type="varchar" MaxLength="50" />
+          <Property Name="GMEIN" Type="varchar" MaxLength="50" />
+          <Property Name="VERID" Type="varchar" MaxLength="50" />
+          <Property Name="CHARG" Type="varchar" MaxLength="50" />
+          <Property Name="KDAUF" Type="varchar" MaxLength="50" />
+          <Property Name="KDPOS" Type="varchar" MaxLength="50" />
+          <Property Name="KOSTL" Type="varchar" MaxLength="50" />
+          <Property Name="PHAS0" Type="varchar" MaxLength="50" />
+          <Property Name="PHAS1" Type="varchar" MaxLength="50" />
+          <Property Name="PHAS2" Type="varchar" MaxLength="50" />
+          <Property Name="PHAS3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STRMP" Type="varchar" MaxLength="50" />
+          <Property Name="ETRMP" Type="varchar" MaxLength="50" />
+          <Property Name="FTRMS" Type="varchar" MaxLength="50" />
+          <Property Name="GLTRS" Type="varchar" MaxLength="50" />
+          <Property Name="IDAT2" Type="varchar" MaxLength="50" />
+          <Property Name="EDATU" Type="varchar" MaxLength="50" />
+          <Property Name="LOEKZ" Type="varchar" MaxLength="50" />
+          <Property Name="PSMNG" Type="varchar" MaxLength="50" />
+          <Property Name="MEINS" Type="varchar" MaxLength="50" />
+          <Property Name="GSTRI" Type="varchar" MaxLength="50" />
+          <Property Name="GETRI" Type="varchar" MaxLength="50" />
+          <Property Name="GLTRI" Type="varchar" MaxLength="50" />
+          <Property Name="FTRMI" Type="varchar" MaxLength="50" />
+          <Property Name="AUFPL" Type="varchar" MaxLength="50" />
+          <Property Name="PLNTY" Type="varchar" MaxLength="50" />
+          <Property Name="PLNAL" Type="varchar" MaxLength="50" />
+          <Property Name="PVERW" Type="varchar" MaxLength="50" />
+          <Property Name="STLAL" Type="varchar" MaxLength="50" />
+          <Property Name="STLAN" Type="varchar" MaxLength="50" />
+          <Property Name="ADD1" Type="varchar" MaxLength="50" />
+          <Property Name="ADD2" Type="varchar" MaxLength="50" />
+          <Property Name="ADD3" Type="varchar" MaxLength="100" />
+          <Property Name="ADD4" Type="varchar" MaxLength="100" />
+          <Property Name="ADD5" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DataFromSap.dbo.View_T_SAP_PP_ProductOrderRoute”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_T_SAP_PP_ProductOrderRoute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="14" />
+          <Property Name="AUFNR" Type="varchar" MaxLength="50" />
+          <Property Name="AUART" Type="varchar" MaxLength="50" />
+          <Property Name="WERKS" Type="varchar" MaxLength="50" />
+          <Property Name="BUKRS" Type="varchar" MaxLength="50" />
+          <Property Name="ERDAT" Type="varchar" MaxLength="50" />
+          <Property Name="OBJNR" Type="varchar" MaxLength="50" />
+          <Property Name="KDAUF" Type="varchar" MaxLength="50" />
+          <Property Name="KDPOS" Type="varchar" MaxLength="50" />
+          <Property Name="KTEXT" Type="varchar" MaxLength="50" />
+          <Property Name="LTEXT" Type="varchar" MaxLength="50" />
+          <Property Name="MATNR" Type="varchar" MaxLength="50" />
+          <Property Name="POSNR" Type="varchar" MaxLength="50" />
+          <Property Name="STRMP" Type="varchar" MaxLength="50" />
+          <Property Name="ETRMP" Type="varchar" MaxLength="50" />
+          <Property Name="CHARG" Type="varchar" MaxLength="50" />
+          <Property Name="FTRMI" Type="varchar" MaxLength="50" />
+          <Property Name="GAMNG" Type="varchar" MaxLength="50" />
+          <Property Name="GMEIN" Type="varchar" MaxLength="50" />
+          <Property Name="AUFPL" Type="varchar" MaxLength="50" />
+          <Property Name="AUFPL_A" Type="varchar" MaxLength="50" />
+          <Property Name="VORNR" Type="varchar" MaxLength="50" />
+          <Property Name="STEUS" Type="varchar" MaxLength="50" />
+          <Property Name="WEEK_A" Type="varchar" MaxLength="50" />
+          <Property Name="KTSCH" Type="varchar" MaxLength="50" />
+          <Property Name="LTXA1" Type="varchar" MaxLength="50" />
+          <Property Name="SSAVD" Type="varchar" MaxLength="50" />
+          <Property Name="LOEKZ" Type="varchar" MaxLength="50" />
+          <Property Name="CPD_UPDAT" Type="varchar" MaxLength="50" />
+          <Property Name="ARBPL" Type="varchar" MaxLength="50" />
+          <Property Name="KTEXT_C" Type="varchar" MaxLength="50" />
+          <Property Name="VGE01" Type="varchar" MaxLength="50" />
+          <Property Name="VGW01" Type="varchar" MaxLength="50" />
+          <Property Name="VGE02" Type="varchar" MaxLength="50" />
+          <Property Name="VGW02" Type="varchar" MaxLength="50" />
+          <Property Name="VGE03" Type="varchar" MaxLength="50" />
+          <Property Name="VGW03" Type="varchar" MaxLength="50" />
+          <Property Name="VGE04" Type="varchar" MaxLength="50" />
+          <Property Name="VGW04" Type="varchar" MaxLength="50" />
+          <Property Name="VGE05" Type="varchar" MaxLength="50" />
+          <Property Name="VGW05" Type="varchar" MaxLength="50" />
+          <Property Name="VGE06" Type="varchar" MaxLength="50" />
+          <Property Name="VGW06" Type="varchar" MaxLength="50" />
+          <Property Name="ADD1" Type="varchar" MaxLength="50" />
+          <Property Name="ADD2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="SapModelStoreContainer">
+          <EntitySet Name="View_MBEW" EntityType="Self.View_MBEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_MBEW].[Id] AS [Id], 
+    [View_MBEW].[ProductCode] AS [ProductCode], 
+    [View_MBEW].[MATNR] AS [MATNR], 
+    [View_MBEW].[BWKEY] AS [BWKEY], 
+    [View_MBEW].[BWTAR] AS [BWTAR], 
+    [View_MBEW].[STPRS] AS [STPRS], 
+    [View_MBEW].[VERPR] AS [VERPR], 
+    [View_MBEW].[ZPLP1] AS [ZPLP1], 
+    [View_MBEW].[VPRSV] AS [VPRSV], 
+    [View_MBEW].[PEINH] AS [PEINH], 
+    [View_MBEW].[LVORM] AS [LVORM], 
+    [View_MBEW].[ADD1] AS [ADD1]
+    FROM [dbo].[View_MBEW] AS [View_MBEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_T_SAP_PP_MaterialMove" EntityType="Self.View_T_SAP_PP_MaterialMove" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_T_SAP_PP_MaterialMove].[Id] AS [Id], 
+    [View_T_SAP_PP_MaterialMove].[ProductCode] AS [ProductCode], 
+    [View_T_SAP_PP_MaterialMove].[MBLNR] AS [MBLNR], 
+    [View_T_SAP_PP_MaterialMove].[MJAHR] AS [MJAHR], 
+    [View_T_SAP_PP_MaterialMove].[BWART] AS [BWART], 
+    [View_T_SAP_PP_MaterialMove].[MATNR] AS [MATNR], 
+    [View_T_SAP_PP_MaterialMove].[MAKTX] AS [MAKTX], 
+    [View_T_SAP_PP_MaterialMove].[BISMT] AS [BISMT], 
+    [View_T_SAP_PP_MaterialMove].[MTART] AS [MTART], 
+    [View_T_SAP_PP_MaterialMove].[GROES] AS [GROES], 
+    [View_T_SAP_PP_MaterialMove].[MVGR2] AS [MVGR2], 
+    [View_T_SAP_PP_MaterialMove].[MATKL] AS [MATKL], 
+    [View_T_SAP_PP_MaterialMove].[NTGEW] AS [NTGEW], 
+    [View_T_SAP_PP_MaterialMove].[GEWEI] AS [GEWEI], 
+    [View_T_SAP_PP_MaterialMove].[WERKS] AS [WERKS], 
+    [View_T_SAP_PP_MaterialMove].[LGORT] AS [LGORT], 
+    [View_T_SAP_PP_MaterialMove].[CHARG] AS [CHARG], 
+    [View_T_SAP_PP_MaterialMove].[MENGE] AS [MENGE], 
+    [View_T_SAP_PP_MaterialMove].[MEINS] AS [MEINS], 
+    [View_T_SAP_PP_MaterialMove].[DMBTR] AS [DMBTR], 
+    [View_T_SAP_PP_MaterialMove].[PARGB] AS [PARGB], 
+    [View_T_SAP_PP_MaterialMove].[AUFNR] AS [AUFNR], 
+    [View_T_SAP_PP_MaterialMove].[EBELN] AS [EBELN], 
+    [View_T_SAP_PP_MaterialMove].[BUDAT_MKPF] AS [BUDAT_MKPF], 
+    [View_T_SAP_PP_MaterialMove].[SAKTO] AS [SAKTO], 
+    [View_T_SAP_PP_MaterialMove].[KOSTL] AS [KOSTL], 
+    [View_T_SAP_PP_MaterialMove].[DISPO] AS [DISPO], 
+    [View_T_SAP_PP_MaterialMove].[WRKST] AS [WRKST], 
+    [View_T_SAP_PP_MaterialMove].[ZEINR] AS [ZEINR], 
+    [View_T_SAP_PP_MaterialMove].[BRGEW] AS [BRGEW], 
+    [View_T_SAP_PP_MaterialMove].[SMBLN] AS [SMBLN], 
+    [View_T_SAP_PP_MaterialMove].[ADD0] AS [ADD0], 
+    [View_T_SAP_PP_MaterialMove].[ADD1] AS [ADD1], 
+    [View_T_SAP_PP_MaterialMove].[ADD2] AS [ADD2], 
+    [View_T_SAP_PP_MaterialMove].[ADD3] AS [ADD3], 
+    [View_T_SAP_PP_MaterialMove].[ADD4] AS [ADD4], 
+    [View_T_SAP_PP_MaterialMove].[ADD5] AS [ADD5], 
+    [View_T_SAP_PP_MaterialMove].[ADD6] AS [ADD6]
+    FROM [dbo].[View_T_SAP_PP_MaterialMove] AS [View_T_SAP_PP_MaterialMove]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_T_SAP_PP_ProductOrderHeader" EntityType="Self.View_T_SAP_PP_ProductOrderHeader" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_T_SAP_PP_ProductOrderHeader].[Id] AS [Id], 
+    [View_T_SAP_PP_ProductOrderHeader].[ProductCode] AS [ProductCode], 
+    [View_T_SAP_PP_ProductOrderHeader].[AUFNR] AS [AUFNR], 
+    [View_T_SAP_PP_ProductOrderHeader].[AUART] AS [AUART], 
+    [View_T_SAP_PP_ProductOrderHeader].[AUTYP] AS [AUTYP], 
+    [View_T_SAP_PP_ProductOrderHeader].[REFNR] AS [REFNR], 
+    [View_T_SAP_PP_ProductOrderHeader].[ERDAT] AS [ERDAT], 
+    [View_T_SAP_PP_ProductOrderHeader].[AEDAT] AS [AEDAT], 
+    [View_T_SAP_PP_ProductOrderHeader].[MATNR] AS [MATNR], 
+    [View_T_SAP_PP_ProductOrderHeader].[KTEXT] AS [KTEXT], 
+    [View_T_SAP_PP_ProductOrderHeader].[LTEXT] AS [LTEXT], 
+    [View_T_SAP_PP_ProductOrderHeader].[BUKRS] AS [BUKRS], 
+    [View_T_SAP_PP_ProductOrderHeader].[WERKS] AS [WERKS], 
+    [View_T_SAP_PP_ProductOrderHeader].[ERNAM] AS [ERNAM], 
+    [View_T_SAP_PP_ProductOrderHeader].[GSBER] AS [GSBER], 
+    [View_T_SAP_PP_ProductOrderHeader].[GAMNG] AS [GAMNG], 
+    [View_T_SAP_PP_ProductOrderHeader].[GMEIN] AS [GMEIN], 
+    [View_T_SAP_PP_ProductOrderHeader].[VERID] AS [VERID], 
+    [View_T_SAP_PP_ProductOrderHeader].[CHARG] AS [CHARG], 
+    [View_T_SAP_PP_ProductOrderHeader].[KDAUF] AS [KDAUF], 
+    [View_T_SAP_PP_ProductOrderHeader].[KDPOS] AS [KDPOS], 
+    [View_T_SAP_PP_ProductOrderHeader].[KOSTL] AS [KOSTL], 
+    [View_T_SAP_PP_ProductOrderHeader].[PHAS0] AS [PHAS0], 
+    [View_T_SAP_PP_ProductOrderHeader].[PHAS1] AS [PHAS1], 
+    [View_T_SAP_PP_ProductOrderHeader].[PHAS2] AS [PHAS2], 
+    [View_T_SAP_PP_ProductOrderHeader].[PHAS3] AS [PHAS3], 
+    [View_T_SAP_PP_ProductOrderHeader].[STRMP] AS [STRMP], 
+    [View_T_SAP_PP_ProductOrderHeader].[ETRMP] AS [ETRMP], 
+    [View_T_SAP_PP_ProductOrderHeader].[FTRMS] AS [FTRMS], 
+    [View_T_SAP_PP_ProductOrderHeader].[GLTRS] AS [GLTRS], 
+    [View_T_SAP_PP_ProductOrderHeader].[IDAT2] AS [IDAT2], 
+    [View_T_SAP_PP_ProductOrderHeader].[EDATU] AS [EDATU], 
+    [View_T_SAP_PP_ProductOrderHeader].[LOEKZ] AS [LOEKZ], 
+    [View_T_SAP_PP_ProductOrderHeader].[PSMNG] AS [PSMNG], 
+    [View_T_SAP_PP_ProductOrderHeader].[MEINS] AS [MEINS], 
+    [View_T_SAP_PP_ProductOrderHeader].[GSTRI] AS [GSTRI], 
+    [View_T_SAP_PP_ProductOrderHeader].[GETRI] AS [GETRI], 
+    [View_T_SAP_PP_ProductOrderHeader].[GLTRI] AS [GLTRI], 
+    [View_T_SAP_PP_ProductOrderHeader].[FTRMI] AS [FTRMI], 
+    [View_T_SAP_PP_ProductOrderHeader].[AUFPL] AS [AUFPL], 
+    [View_T_SAP_PP_ProductOrderHeader].[PLNTY] AS [PLNTY], 
+    [View_T_SAP_PP_ProductOrderHeader].[PLNAL] AS [PLNAL], 
+    [View_T_SAP_PP_ProductOrderHeader].[PVERW] AS [PVERW], 
+    [View_T_SAP_PP_ProductOrderHeader].[STLAL] AS [STLAL], 
+    [View_T_SAP_PP_ProductOrderHeader].[STLAN] AS [STLAN], 
+    [View_T_SAP_PP_ProductOrderHeader].[ADD1] AS [ADD1], 
+    [View_T_SAP_PP_ProductOrderHeader].[ADD2] AS [ADD2], 
+    [View_T_SAP_PP_ProductOrderHeader].[ADD3] AS [ADD3], 
+    [View_T_SAP_PP_ProductOrderHeader].[ADD4] AS [ADD4], 
+    [View_T_SAP_PP_ProductOrderHeader].[ADD5] AS [ADD5]
+    FROM [dbo].[View_T_SAP_PP_ProductOrderHeader] AS [View_T_SAP_PP_ProductOrderHeader]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_T_SAP_PP_ProductOrderRoute" EntityType="Self.View_T_SAP_PP_ProductOrderRoute" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_T_SAP_PP_ProductOrderRoute].[Id] AS [Id], 
+    [View_T_SAP_PP_ProductOrderRoute].[ProductCode] AS [ProductCode], 
+    [View_T_SAP_PP_ProductOrderRoute].[AUFNR] AS [AUFNR], 
+    [View_T_SAP_PP_ProductOrderRoute].[AUART] AS [AUART], 
+    [View_T_SAP_PP_ProductOrderRoute].[WERKS] AS [WERKS], 
+    [View_T_SAP_PP_ProductOrderRoute].[BUKRS] AS [BUKRS], 
+    [View_T_SAP_PP_ProductOrderRoute].[ERDAT] AS [ERDAT], 
+    [View_T_SAP_PP_ProductOrderRoute].[OBJNR] AS [OBJNR], 
+    [View_T_SAP_PP_ProductOrderRoute].[KDAUF] AS [KDAUF], 
+    [View_T_SAP_PP_ProductOrderRoute].[KDPOS] AS [KDPOS], 
+    [View_T_SAP_PP_ProductOrderRoute].[KTEXT] AS [KTEXT], 
+    [View_T_SAP_PP_ProductOrderRoute].[LTEXT] AS [LTEXT], 
+    [View_T_SAP_PP_ProductOrderRoute].[MATNR] AS [MATNR], 
+    [View_T_SAP_PP_ProductOrderRoute].[POSNR] AS [POSNR], 
+    [View_T_SAP_PP_ProductOrderRoute].[STRMP] AS [STRMP], 
+    [View_T_SAP_PP_ProductOrderRoute].[ETRMP] AS [ETRMP], 
+    [View_T_SAP_PP_ProductOrderRoute].[CHARG] AS [CHARG], 
+    [View_T_SAP_PP_ProductOrderRoute].[FTRMI] AS [FTRMI], 
+    [View_T_SAP_PP_ProductOrderRoute].[GAMNG] AS [GAMNG], 
+    [View_T_SAP_PP_ProductOrderRoute].[GMEIN] AS [GMEIN], 
+    [View_T_SAP_PP_ProductOrderRoute].[AUFPL] AS [AUFPL], 
+    [View_T_SAP_PP_ProductOrderRoute].[AUFPL_A] AS [AUFPL_A], 
+    [View_T_SAP_PP_ProductOrderRoute].[VORNR] AS [VORNR], 
+    [View_T_SAP_PP_ProductOrderRoute].[STEUS] AS [STEUS], 
+    [View_T_SAP_PP_ProductOrderRoute].[WEEK_A] AS [WEEK_A], 
+    [View_T_SAP_PP_ProductOrderRoute].[KTSCH] AS [KTSCH], 
+    [View_T_SAP_PP_ProductOrderRoute].[LTXA1] AS [LTXA1], 
+    [View_T_SAP_PP_ProductOrderRoute].[SSAVD] AS [SSAVD], 
+    [View_T_SAP_PP_ProductOrderRoute].[LOEKZ] AS [LOEKZ], 
+    [View_T_SAP_PP_ProductOrderRoute].[CPD_UPDAT] AS [CPD_UPDAT], 
+    [View_T_SAP_PP_ProductOrderRoute].[ARBPL] AS [ARBPL], 
+    [View_T_SAP_PP_ProductOrderRoute].[KTEXT_C] AS [KTEXT_C], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGE01] AS [VGE01], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGW01] AS [VGW01], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGE02] AS [VGE02], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGW02] AS [VGW02], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGE03] AS [VGE03], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGW03] AS [VGW03], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGE04] AS [VGE04], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGW04] AS [VGW04], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGE05] AS [VGE05], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGW05] AS [VGW05], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGE06] AS [VGE06], 
+    [View_T_SAP_PP_ProductOrderRoute].[VGW06] AS [VGW06], 
+    [View_T_SAP_PP_ProductOrderRoute].[ADD1] AS [ADD1], 
+    [View_T_SAP_PP_ProductOrderRoute].[ADD2] AS [ADD2]
+    FROM [dbo].[View_T_SAP_PP_ProductOrderRoute] AS [View_T_SAP_PP_ProductOrderRoute]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataFromSapEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="View_MBEW" EntityType="SapModel.View_MBEW" />
+          <EntitySet Name="View_T_SAP_PP_MaterialMove" EntityType="SapModel.View_T_SAP_PP_MaterialMove" />
+          <EntitySet Name="View_T_SAP_PP_ProductOrderHeader" EntityType="SapModel.View_T_SAP_PP_ProductOrderHeader" />
+          <EntitySet Name="View_T_SAP_PP_ProductOrderRoute" EntityType="SapModel.View_T_SAP_PP_ProductOrderRoute" />
+        </EntityContainer>
+        <EntityType Name="View_MBEW">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="MATNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BWKEY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BWTAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STPRS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VERPR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZPLP1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VPRSV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PEINH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LVORM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADD1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_T_SAP_PP_MaterialMove">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="MBLNR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MJAHR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BWART" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MATNR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MAKTX" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BISMT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MTART" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GROES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MVGR2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MATKL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NTGEW" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GEWEI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WERKS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LGORT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CHARG" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MENGE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MEINS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DMBTR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PARGB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AUFNR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EBELN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BUDAT_MKPF" Type="DateTime" Precision="3" />
+          <Property Name="SAKTO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KOSTL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DISPO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WRKST" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ZEINR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BRGEW" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SMBLN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD0" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADD6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_T_SAP_PP_ProductOrderHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PHAS3" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="AUFNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUART" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUTYP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REFNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ERDAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AEDAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MATNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KTEXT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUKRS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WERKS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ERNAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GAMNG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GMEIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VERID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CHARG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KDAUF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KDPOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KOSTL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHAS0" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHAS1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHAS2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHAS3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STRMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETRMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FTRMS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GLTRS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDAT2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EDATU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOEKZ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PSMNG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEINS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSTRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GETRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GLTRI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FTRMI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUFPL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLNTY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLNAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PVERW" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STLAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STLAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADD1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADD2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADD3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ADD4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ADD5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_T_SAP_PP_ProductOrderRoute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="AUFNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUART" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WERKS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUKRS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ERDAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OBJNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KDAUF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KDPOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LTEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MATNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STRMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETRMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CHARG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FTRMI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GAMNG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GMEIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUFPL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AUFPL_A" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VORNR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STEUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WEEK_A" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KTSCH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LTXA1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SSAVD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOEKZ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CPD_UPDAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ARBPL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KTEXT_C" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGE01" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGW01" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGE02" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGW02" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGE03" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGW03" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGE04" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGW04" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGE05" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGW05" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGE06" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VGW06" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADD1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADD2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SapModelStoreContainer" CdmEntityContainer="DataFromSapEntities">
+          <EntitySetMapping Name="View_MBEW">
+            <EntityTypeMapping TypeName="SapModel.View_MBEW">
+              <MappingFragment StoreEntitySet="View_MBEW">
+                <ScalarProperty Name="ADD1" ColumnName="ADD1" />
+                <ScalarProperty Name="LVORM" ColumnName="LVORM" />
+                <ScalarProperty Name="PEINH" ColumnName="PEINH" />
+                <ScalarProperty Name="VPRSV" ColumnName="VPRSV" />
+                <ScalarProperty Name="ZPLP1" ColumnName="ZPLP1" />
+                <ScalarProperty Name="VERPR" ColumnName="VERPR" />
+                <ScalarProperty Name="STPRS" ColumnName="STPRS" />
+                <ScalarProperty Name="BWTAR" ColumnName="BWTAR" />
+                <ScalarProperty Name="BWKEY" ColumnName="BWKEY" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_T_SAP_PP_MaterialMove">
+            <EntityTypeMapping TypeName="SapModel.View_T_SAP_PP_MaterialMove">
+              <MappingFragment StoreEntitySet="View_T_SAP_PP_MaterialMove">
+                <ScalarProperty Name="ADD6" ColumnName="ADD6" />
+                <ScalarProperty Name="ADD5" ColumnName="ADD5" />
+                <ScalarProperty Name="ADD4" ColumnName="ADD4" />
+                <ScalarProperty Name="ADD3" ColumnName="ADD3" />
+                <ScalarProperty Name="ADD2" ColumnName="ADD2" />
+                <ScalarProperty Name="ADD1" ColumnName="ADD1" />
+                <ScalarProperty Name="ADD0" ColumnName="ADD0" />
+                <ScalarProperty Name="SMBLN" ColumnName="SMBLN" />
+                <ScalarProperty Name="BRGEW" ColumnName="BRGEW" />
+                <ScalarProperty Name="ZEINR" ColumnName="ZEINR" />
+                <ScalarProperty Name="WRKST" ColumnName="WRKST" />
+                <ScalarProperty Name="DISPO" ColumnName="DISPO" />
+                <ScalarProperty Name="KOSTL" ColumnName="KOSTL" />
+                <ScalarProperty Name="SAKTO" ColumnName="SAKTO" />
+                <ScalarProperty Name="BUDAT_MKPF" ColumnName="BUDAT_MKPF" />
+                <ScalarProperty Name="EBELN" ColumnName="EBELN" />
+                <ScalarProperty Name="AUFNR" ColumnName="AUFNR" />
+                <ScalarProperty Name="PARGB" ColumnName="PARGB" />
+                <ScalarProperty Name="DMBTR" ColumnName="DMBTR" />
+                <ScalarProperty Name="MEINS" ColumnName="MEINS" />
+                <ScalarProperty Name="MENGE" ColumnName="MENGE" />
+                <ScalarProperty Name="CHARG" ColumnName="CHARG" />
+                <ScalarProperty Name="LGORT" ColumnName="LGORT" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="GEWEI" ColumnName="GEWEI" />
+                <ScalarProperty Name="NTGEW" ColumnName="NTGEW" />
+                <ScalarProperty Name="MATKL" ColumnName="MATKL" />
+                <ScalarProperty Name="MVGR2" ColumnName="MVGR2" />
+                <ScalarProperty Name="GROES" ColumnName="GROES" />
+                <ScalarProperty Name="MTART" ColumnName="MTART" />
+                <ScalarProperty Name="BISMT" ColumnName="BISMT" />
+                <ScalarProperty Name="MAKTX" ColumnName="MAKTX" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="BWART" ColumnName="BWART" />
+                <ScalarProperty Name="MJAHR" ColumnName="MJAHR" />
+                <ScalarProperty Name="MBLNR" ColumnName="MBLNR" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_T_SAP_PP_ProductOrderHeader">
+            <EntityTypeMapping TypeName="SapModel.View_T_SAP_PP_ProductOrderHeader">
+              <MappingFragment StoreEntitySet="View_T_SAP_PP_ProductOrderHeader">
+                <ScalarProperty Name="ADD5" ColumnName="ADD5" />
+                <ScalarProperty Name="ADD4" ColumnName="ADD4" />
+                <ScalarProperty Name="ADD3" ColumnName="ADD3" />
+                <ScalarProperty Name="ADD2" ColumnName="ADD2" />
+                <ScalarProperty Name="ADD1" ColumnName="ADD1" />
+                <ScalarProperty Name="STLAN" ColumnName="STLAN" />
+                <ScalarProperty Name="STLAL" ColumnName="STLAL" />
+                <ScalarProperty Name="PVERW" ColumnName="PVERW" />
+                <ScalarProperty Name="PLNAL" ColumnName="PLNAL" />
+                <ScalarProperty Name="PLNTY" ColumnName="PLNTY" />
+                <ScalarProperty Name="AUFPL" ColumnName="AUFPL" />
+                <ScalarProperty Name="FTRMI" ColumnName="FTRMI" />
+                <ScalarProperty Name="GLTRI" ColumnName="GLTRI" />
+                <ScalarProperty Name="GETRI" ColumnName="GETRI" />
+                <ScalarProperty Name="GSTRI" ColumnName="GSTRI" />
+                <ScalarProperty Name="MEINS" ColumnName="MEINS" />
+                <ScalarProperty Name="PSMNG" ColumnName="PSMNG" />
+                <ScalarProperty Name="LOEKZ" ColumnName="LOEKZ" />
+                <ScalarProperty Name="EDATU" ColumnName="EDATU" />
+                <ScalarProperty Name="IDAT2" ColumnName="IDAT2" />
+                <ScalarProperty Name="GLTRS" ColumnName="GLTRS" />
+                <ScalarProperty Name="FTRMS" ColumnName="FTRMS" />
+                <ScalarProperty Name="ETRMP" ColumnName="ETRMP" />
+                <ScalarProperty Name="STRMP" ColumnName="STRMP" />
+                <ScalarProperty Name="PHAS3" ColumnName="PHAS3" />
+                <ScalarProperty Name="PHAS2" ColumnName="PHAS2" />
+                <ScalarProperty Name="PHAS1" ColumnName="PHAS1" />
+                <ScalarProperty Name="PHAS0" ColumnName="PHAS0" />
+                <ScalarProperty Name="KOSTL" ColumnName="KOSTL" />
+                <ScalarProperty Name="KDPOS" ColumnName="KDPOS" />
+                <ScalarProperty Name="KDAUF" ColumnName="KDAUF" />
+                <ScalarProperty Name="CHARG" ColumnName="CHARG" />
+                <ScalarProperty Name="VERID" ColumnName="VERID" />
+                <ScalarProperty Name="GMEIN" ColumnName="GMEIN" />
+                <ScalarProperty Name="GAMNG" ColumnName="GAMNG" />
+                <ScalarProperty Name="GSBER" ColumnName="GSBER" />
+                <ScalarProperty Name="ERNAM" ColumnName="ERNAM" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="BUKRS" ColumnName="BUKRS" />
+                <ScalarProperty Name="LTEXT" ColumnName="LTEXT" />
+                <ScalarProperty Name="KTEXT" ColumnName="KTEXT" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="AEDAT" ColumnName="AEDAT" />
+                <ScalarProperty Name="ERDAT" ColumnName="ERDAT" />
+                <ScalarProperty Name="REFNR" ColumnName="REFNR" />
+                <ScalarProperty Name="AUTYP" ColumnName="AUTYP" />
+                <ScalarProperty Name="AUART" ColumnName="AUART" />
+                <ScalarProperty Name="AUFNR" ColumnName="AUFNR" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_T_SAP_PP_ProductOrderRoute">
+            <EntityTypeMapping TypeName="SapModel.View_T_SAP_PP_ProductOrderRoute">
+              <MappingFragment StoreEntitySet="View_T_SAP_PP_ProductOrderRoute">
+                <ScalarProperty Name="ADD2" ColumnName="ADD2" />
+                <ScalarProperty Name="ADD1" ColumnName="ADD1" />
+                <ScalarProperty Name="VGW06" ColumnName="VGW06" />
+                <ScalarProperty Name="VGE06" ColumnName="VGE06" />
+                <ScalarProperty Name="VGW05" ColumnName="VGW05" />
+                <ScalarProperty Name="VGE05" ColumnName="VGE05" />
+                <ScalarProperty Name="VGW04" ColumnName="VGW04" />
+                <ScalarProperty Name="VGE04" ColumnName="VGE04" />
+                <ScalarProperty Name="VGW03" ColumnName="VGW03" />
+                <ScalarProperty Name="VGE03" ColumnName="VGE03" />
+                <ScalarProperty Name="VGW02" ColumnName="VGW02" />
+                <ScalarProperty Name="VGE02" ColumnName="VGE02" />
+                <ScalarProperty Name="VGW01" ColumnName="VGW01" />
+                <ScalarProperty Name="VGE01" ColumnName="VGE01" />
+                <ScalarProperty Name="KTEXT_C" ColumnName="KTEXT_C" />
+                <ScalarProperty Name="ARBPL" ColumnName="ARBPL" />
+                <ScalarProperty Name="CPD_UPDAT" ColumnName="CPD_UPDAT" />
+                <ScalarProperty Name="LOEKZ" ColumnName="LOEKZ" />
+                <ScalarProperty Name="SSAVD" ColumnName="SSAVD" />
+                <ScalarProperty Name="LTXA1" ColumnName="LTXA1" />
+                <ScalarProperty Name="KTSCH" ColumnName="KTSCH" />
+                <ScalarProperty Name="WEEK_A" ColumnName="WEEK_A" />
+                <ScalarProperty Name="STEUS" ColumnName="STEUS" />
+                <ScalarProperty Name="VORNR" ColumnName="VORNR" />
+                <ScalarProperty Name="AUFPL_A" ColumnName="AUFPL_A" />
+                <ScalarProperty Name="AUFPL" ColumnName="AUFPL" />
+                <ScalarProperty Name="GMEIN" ColumnName="GMEIN" />
+                <ScalarProperty Name="GAMNG" ColumnName="GAMNG" />
+                <ScalarProperty Name="FTRMI" ColumnName="FTRMI" />
+                <ScalarProperty Name="CHARG" ColumnName="CHARG" />
+                <ScalarProperty Name="ETRMP" ColumnName="ETRMP" />
+                <ScalarProperty Name="STRMP" ColumnName="STRMP" />
+                <ScalarProperty Name="POSNR" ColumnName="POSNR" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="LTEXT" ColumnName="LTEXT" />
+                <ScalarProperty Name="KTEXT" ColumnName="KTEXT" />
+                <ScalarProperty Name="KDPOS" ColumnName="KDPOS" />
+                <ScalarProperty Name="KDAUF" ColumnName="KDAUF" />
+                <ScalarProperty Name="OBJNR" ColumnName="OBJNR" />
+                <ScalarProperty Name="ERDAT" ColumnName="ERDAT" />
+                <ScalarProperty Name="BUKRS" ColumnName="BUKRS" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="AUART" ColumnName="AUART" />
+                <ScalarProperty Name="AUFNR" ColumnName="AUFNR" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

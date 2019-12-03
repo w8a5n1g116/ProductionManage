@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FineUIMvc.EmptyProject.Models.Model.ProductionHoursReport>
+
+@{
+    ViewBag.Title = "Index";
+    var F = @Html.F();
+}
+
+@section body {
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("月生产工时报表").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("PRODUCT_NAME")
+            //.AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+            .Toolbars(
+                F.Toolbar().ID("Toolbar1")
+                    .Items(
+                        F.DatePicker()
+                            .Required(true)
+                            .DateFormatString("yyyy-MM")
+                            .Label("年月")
+                            .EmptyText("请选择年月")
+                            .ID("yearMonth")
+                            .SelectedDate(DateTime.Now),
+                        F.Button()
+                            .ID("QueryButton")
+                            .Text("查询")
+                            .OnClick(Url.Action("ProductionHoursReport"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"))
+                    )
+                )
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("计划月份").ColumnID("Month").DataField("Month").Width(100),
+                F.RenderField().HeaderText("负责部门").ColumnID("Deportment").DataField("Deportment").Width(150),
+                F.RenderField().HeaderText("年度经营计划").ColumnID("YearlyPlan").DataField("YearlyPlan").Width(120),
+                F.RenderField().HeaderText("累计完成").ColumnID("Complete").DataField("Complete").Width(100),
+                F.RenderField().HeaderText("累计完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120),
+                F.RenderField().HeaderText("月工时计划").ColumnID("MonthHourPlan").DataField("MonthHourPlan").Width(120),
+                F.RenderField().HeaderText("月工时完成").ColumnID("MonthHourComplete").DataField("MonthHourComplete").Width(120),
+                F.RenderField().HeaderText("月完成率").ColumnID("MonthFinishingRate").DataField("MonthFinishingRate").Width(120)
+            )
+            .DataSource(Model)
+    ) 
+}
+@section script {
+    <script>
+        F.ready(function () {
+
+        });
+ 
+    </script>
+}

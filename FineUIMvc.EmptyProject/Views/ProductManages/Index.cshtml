@@ -1,0 +1,189 @@
+﻿@model IEnumerable<FineUIMvc.EmptyProject.Models.ProductManage>
+
+@{
+    ViewBag.Title = "Index";
+    var F = @Html.F();
+}
+
+@section body {
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("月生产计划").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("PRODUCT_NAME")
+    .AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+    .AllowPaging(true).PageSize(20).IsDatabasePaging(true).OnPageIndexChanged(Url.Action("Grid1_PageIndexChanged"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"))
+            .Toolbars(
+                F.Toolbar().ID("Toolbar1")
+                    .Items(
+                        F.DatePicker()
+                            .Required(true)
+                            .DateFormatString("yyyy-MM")
+                            .Label("年月")
+                            .EmptyText("请选择年月")
+                            .ID("yearMonth"),
+                        F.DropDownList().ID("Deportment")
+                            .Label("部门")
+                            .Items(
+                                ViewBag.Deportment
+                            ),
+                        F.Button()
+                            .ID("QueryButton")
+                            .Text("查询")
+                            .OnClick(Url.Action("Index"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"), new Parameter("Deportment", "F.ui.Deportment.getText()"))
+                            ,
+                        F.FileUpload()
+                            .ID("fileExcel")
+                            .ButtonText("导入EXCEL")
+                            .AcceptFileTypes("xlsx/*")
+                            .ButtonOnly(true)
+                            .OnFileSelected(Url.Action("fileExcel_FileSelected"), "fileExcel").ButtonIconFont(IconFont._Upload)
+                    ),
+                    F.Toolbar().ID("Toolbar2")
+                        .Items(
+                            F.Button()
+                                .ID("btnAdd")
+                                .Text("添加")
+                                .Listener("click", "onNewClick"),
+                            F.Button()
+                                .ID("btnSave")
+                                .Text("保存")
+                                .OnClick(Url.Action("btnSubmit_Click"), "Grid1", new Parameter("pageIndex", "F.ui.Grid1.pageIndex"), new Parameter("yearMonth", "F.ui.yearMonth.getText()")),
+                            F.Button()
+                                .ID("btnDelete")
+                                .Text("删除")
+                                .Listener("click", "onDeleteClick")
+                        )
+                )
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("工厂").ColumnID("FAB_NAME").DataField("FAB_NAME").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxFAB_NAME").Required(true)
+                    ),
+                F.RenderField().HeaderText("产品名称").ColumnID("PRODUCT_NAME").DataField("PRODUCT_NAME").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxPRODUCT_NAME").Required(true)
+                    ),
+                F.RenderField().HeaderText("产品代码").ColumnID("PRODUCT_ID").DataField("PRODUCT_ID").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxPRODUCT_ID").Required(true)
+                    ),
+                F.RenderField().HeaderText("加工类型").ColumnID("MACH_TYPE").DataField("MACH_TYPE").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxMACH_TYPE").Required(true)
+                    ),
+                F.RenderField().HeaderText("产品类型").ColumnID("PRODUCT_TYPE").DataField("PRODUCT_TYPE").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxPRODUCT_TYPE").Required(true)
+                    ),
+                F.RenderField().HeaderText("加工性质").ColumnID("MACH_PRO").DataField("MACH_PRO").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxMACH_PRO").Required(true)
+                    ),
+                F.RenderField().HeaderText("物料代码").ColumnID("MATERIAL_ID").DataField("MATERIAL_ID").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxMATERIAL_ID").Required(true)
+                    ),
+                F.RenderField().HeaderText("单重").ColumnID("WEIGHT").DataField("WEIGHT").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("nbxWEIGHT")
+                    ),
+                F.RenderField().HeaderText("产品定额").ColumnID("PROCUT_QUOTA").DataField("PROCUT_QUOTA").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxPROCUT_QUOTA").Required(true)
+                    ),
+                F.RenderField().HeaderText("估计价值").ColumnID("OUTPUT_VALUE").DataField("OUTPUT_VALUE").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxOUTPUT_VALUE").Required(true)
+                    ),
+                F.RenderField().HeaderText("订单交期").ColumnID("DELIVERY_DATE").DataField("DELIVERY_DATE").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM-dd").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpDELIVERY_DATE").Required(true)
+                    ),
+                F.RenderField().HeaderText("计划开始日期").ColumnID("PLAN_START").DataField("PLAN_START").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM-dd").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpPLAN_START").Required(true)
+                    ),
+                F.RenderField().HeaderText("计划结束日期").ColumnID("PLAN_END").DataField("PLAN_END").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM-dd").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpPLAN_END").Required(true)
+                    ),
+                F.RenderField().HeaderText("计划月份").ColumnID("PLAN_DATE").DataField("PLAN_DATE").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM-dd").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpPLAN_DATE").Required(true)
+                    ),
+                F.RenderField().HeaderText("生产时间").ColumnID("CREATE_TIME").DataField("CREATE_TIME").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM-dd").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpCREATE_TIME").Required(true)
+                    ),
+                F.RenderField().HeaderText("生产用户").ColumnID("CREATE_USER").DataField("CREATE_USER").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxCREATE_USER").Required(true)
+                    ),
+                F.RenderField().HeaderText("经营体").ColumnID("VENTURENAME").DataField("VENTURENAME").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxVENTURENAME").Required(true)
+                    ),
+                F.RenderField().HeaderText("工序").ColumnID("OPERATIONNAME").DataField("OPERATIONNAME").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxOPERATIONNAM").Required(true)
+                    )
+
+            )
+            .RecordCount(ViewBag.RecordCount).DataSource(Model)
+    ) 
+}
+@section script {
+    <script>
+        F.ready(function () {
+
+        });
+
+        function onNewClick(event) {
+            F.ui.Grid1.addNewRecord({
+                'FAB_NAME': '',
+                'PRODUCT_NAME': '',
+                'PRODUCT_ID': '',
+                'MACH_TYPE': '',
+                'PRODUCT_TYPE': '',
+                'MACH_PRO': '',
+                'MATERIAL_ID': '',
+                'WEIGHT': 0,
+                'PROCUT_QUOTA': 0,
+                'OUTPUT_VALUE': 0,
+                'DELIVERY_DATE': '',
+                'PLAN_START': '',
+                'PLAN_END': '',
+                'PLAN_DATE': '',
+                'CREATE_TIME': '',
+                'CREATE_USER': '',
+                'VENTURENAME': '',
+                'OPERATIONNAME':''
+            }, true);
+        }
+
+        function onDeleteClick(event) {
+            var grid1 = F.ui.Grid1;
+            if (!grid1.hasSelection()) {
+                F.alert('没有选中项！');
+                return;
+            }
+
+            var selectedRows = grid1.getSelectedRows();
+            F.confirm({
+                message: '你确定要删除选中的&nbsp;<b>' + selectedRows.length + '</b>&nbsp;行数据吗？',
+                target: '_top',
+                ok: function () {
+                    grid1.deleteRows(selectedRows);
+                }
+            });
+        }
+
+        function openNewTab(name,url) {
+            parent.addExampleTab({
+                id: 'new_product_tab',
+                iframeUrl: url,
+                title: name,
+                refreshWhenExist: true
+            });
+        }
+    </script>
+}

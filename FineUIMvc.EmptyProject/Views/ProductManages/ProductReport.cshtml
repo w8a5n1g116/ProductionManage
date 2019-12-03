@@ -1,0 +1,113 @@
+﻿@model List<FineUIMvc.EmptyProject.Models.Model.ProductionsReport>
+
+@{
+    ViewBag.Title = "Index";
+    var F = @Html.F();
+}
+
+@section body {
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("制造事业部").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("PRODUCT_NAME")
+                                                                    //.AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+            .Toolbars(
+                F.Toolbar().ID("Toolbar1")
+                    .Items(
+                        F.DatePicker()
+                            .Required(true)
+                            .DateFormatString("yyyy-MM")
+                            .Label("年月")
+                            .EmptyText("请选择年月")
+                            .ID("yearMonth")
+                            .SelectedDate(DateTime.Now),
+                        //F.DropDownList().ID("Deportment")
+                        //    .Label("部门")
+                        //    .Items(
+                        //        ViewBag.Deportment
+                        //    ),
+                        F.Button()
+                            .ID("QueryButton")
+                            .Text("查询")
+                            .OnClick(Url.Action("ProductReport"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"))//, new Parameter("Deportment", "F.ui.Deportment.getText()")
+                    )
+                )
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("核算").ColumnID("Unit").DataField("Unit").Width(100),
+                F.RenderField().HeaderText("项目").ColumnID("Item").DataField("Item").Width(120),
+                F.RenderField().HeaderText("计划").ColumnID("Plan").DataField("Plan").Width(120),
+                F.RenderField().HeaderText("完成").ColumnID("Complete").DataField("Complete").Width(120),
+                F.RenderField().HeaderText("完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120)
+            )
+            .DataSource(Model.GetRange(30, 5))
+    )
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("精工工厂").ShowHeader(true).ShowBorder(true).ID("Grid2").DataIDField("ID").DataTextField("PRODUCT_NAME")
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("核算").ColumnID("Unit").DataField("Unit").Width(100),
+                F.RenderField().HeaderText("项目").ColumnID("Item").DataField("Item").Width(120),
+                F.RenderField().HeaderText("计划").ColumnID("Plan").DataField("Plan").Width(120),
+                F.RenderField().HeaderText("完成").ColumnID("Complete").DataField("Complete").Width(120),
+                F.RenderField().HeaderText("完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120)
+            )
+            .DataSource(Model.GetRange(0, 6))
+    )
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("加工工厂").ShowHeader(true).ShowBorder(true).ID("Grid3").DataIDField("ID").DataTextField("PRODUCT_NAME")
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("核算").ColumnID("Unit").DataField("Unit").Width(100),
+                F.RenderField().HeaderText("项目").ColumnID("Item").DataField("Item").Width(120),
+                F.RenderField().HeaderText("计划").ColumnID("Plan").DataField("Plan").Width(120),
+                F.RenderField().HeaderText("完成").ColumnID("Complete").DataField("Complete").Width(120),
+                F.RenderField().HeaderText("完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120)
+            )
+            .DataSource(Model.GetRange(6, 6))
+    )
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("模具工厂").ShowHeader(true).ShowBorder(true).ID("Grid4").DataIDField("ID").DataTextField("PRODUCT_NAME")
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("核算").ColumnID("Unit").DataField("Unit").Width(100),
+                F.RenderField().HeaderText("项目").ColumnID("Item").DataField("Item").Width(120),
+                F.RenderField().HeaderText("计划").ColumnID("Plan").DataField("Plan").Width(120),
+                F.RenderField().HeaderText("完成").ColumnID("Complete").DataField("Complete").Width(120),
+                F.RenderField().HeaderText("完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120)
+            )
+            .DataSource(Model.GetRange(12, 6))
+    )
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("智能设备工厂").ShowHeader(true).ShowBorder(true).ID("Grid5").DataIDField("ID").DataTextField("PRODUCT_NAME")
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("核算").ColumnID("Unit").DataField("Unit").Width(100),
+                F.RenderField().HeaderText("项目").ColumnID("Item").DataField("Item").Width(120),
+                F.RenderField().HeaderText("计划").ColumnID("Plan").DataField("Plan").Width(120),
+                F.RenderField().HeaderText("完成").ColumnID("Complete").DataField("Complete").Width(120),
+                F.RenderField().HeaderText("完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120)
+            )
+            .DataSource(Model.GetRange(18, 6))
+    )
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("智能机器").ShowHeader(true).ShowBorder(true).ID("Grid6").DataIDField("ID").DataTextField("PRODUCT_NAME")
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("核算").ColumnID("Unit").DataField("Unit").Width(100),
+                F.RenderField().HeaderText("项目").ColumnID("Item").DataField("Item").Width(120),
+                F.RenderField().HeaderText("计划").ColumnID("Plan").DataField("Plan").Width(120),
+                F.RenderField().HeaderText("完成").ColumnID("Complete").DataField("Complete").Width(120),
+                F.RenderField().HeaderText("完成率").ColumnID("FinishingRate").DataField("FinishingRate").Width(120)
+            )
+            .DataSource(Model.GetRange(24, 6))
+    )
+
+
+}
+@section script {
+    <script>
+        F.ready(function () {
+
+        });
+
+    </script>
+}

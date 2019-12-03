@@ -1,0 +1,130 @@
+﻿@model IEnumerable<FineUIMvc.EmptyProject.Models.CapCompleteRate>
+
+@{
+    ViewBag.Title = "Index";
+    var F = @Html.F();
+}
+
+@section body {
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("产能完成率录入").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("FAB_NAME")
+    .AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+    .AllowPaging(true).PageSize(20).IsDatabasePaging(true).OnPageIndexChanged(Url.Action("Grid1_PageIndexChanged"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"))
+            .Toolbars(
+                F.Toolbar().ID("Toolbar1")
+                    .Items(
+                        F.DatePicker()
+                            .Required(true)
+                            .DateFormatString("yyyy-MM")
+                            .Label("年月")
+                            .EmptyText("请选择年月")
+                            .ID("yearMonth")
+                            .SelectedDate(DateTime.Now),
+                        F.DropDownList().ID("Deportment")
+                            .Label("工厂")
+                            .Items(
+                                ViewBag.Deportment
+                            ),
+                        F.Button()
+                            .ID("QueryButton")
+                            .Text("查询")
+                            .OnClick(Url.Action("Index"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"), new Parameter("Deportment", "F.ui.Deportment.getText()"))
+                    ),
+                    F.Toolbar().ID("Toolbar2")
+                        .Items(
+                            F.Button()
+                                .ID("btnAdd")
+                                .Text("添加")
+                                .Listener("click", "onNewClick"),
+                            F.Button()
+                                .ID("btnSave")
+                                .Text("保存")
+                                .OnClick(Url.Action("btnSubmit_Click"), "Grid1", new Parameter("pageIndex", "F.ui.Grid1.pageIndex"), new Parameter("yearMonth", "F.ui.yearMonth.getText()")),
+                            F.Button()
+                                .ID("btnDelete")
+                                .Text("删除")
+                                .Listener("click", "onDeleteClick")
+                        )
+                )
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("工厂").ColumnID("FAB_NAME").DataField("FAB_NAME").Width(120)
+                    .Editor(
+                        F.DropDownList().Items(ViewBag.Deportment).ID("tbxFAB_NAME").Required(true)
+                    ),
+                F.RenderField().HeaderText("经营体").ColumnID("Venture").DataField("Venture").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxVenture").Required(true)
+                    ),
+                F.RenderField().HeaderText("工序").ColumnID("Operation").DataField("Operation").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxOperation").Required(true)
+                    ),
+                F.RenderField().HeaderText("完成率").ColumnID("CompleteRate").DataField("CompleteRate").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxCompleteRate").Required(true)
+                    ),
+                F.RenderField().HeaderText("及时率").ColumnID("PromptnessRate").DataField("PromptnessRate").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxPromptnessRate").Required(true)
+                    ),
+                F.RenderField().HeaderText("一次交检合格率").ColumnID("PassRate").DataField("PassRate").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxPassRate").Required(true)
+                    ),
+                F.RenderField().HeaderText("所在年月").ColumnID("PlanDate").DataField("PlanDate").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpDate").SelectedDate(DateTime.Now).Required(true)
+                    )
+
+
+
+            )
+            .RecordCount(ViewBag.RecordCount).DataSource(Model)
+    ) 
+}
+@section script {
+    <script>
+        F.ready(function () {
+
+        });
+
+        function onNewClick(event) {
+            F.ui.Grid1.addNewRecord({
+                'FAB_NAME': '',
+                'Venture': '',
+                'Operation': '',
+                'CompleteRate': 0,
+                'PromptnessRate': 0,               
+                'PassRate': 0,
+                'Date': ''
+            }, true);
+        }
+
+        function onDeleteClick(event) {
+            var grid1 = F.ui.Grid1;
+            if (!grid1.hasSelection()) {
+                F.alert('没有选中项！');
+                return;
+            }
+
+            var selectedRows = grid1.getSelectedRows();
+            F.confirm({
+                message: '你确定要删除选中的&nbsp;<b>' + selectedRows.length + '</b>&nbsp;行数据吗？',
+                target: '_top',
+                ok: function () {
+                    grid1.deleteRows(selectedRows);
+                }
+            });
+        }
+
+        function openNewTab(name,url) {
+            parent.addExampleTab({
+                id: 'new_product_tab',
+                iframeUrl: url,
+                title: name,
+                refreshWhenExist: true
+            });
+        }
+    </script>
+}

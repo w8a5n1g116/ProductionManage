@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FineUIMvc.EmptyProject.Models.Model.Capa>
+
+@{
+    ViewBag.Title = "产能分析";
+    var F = @Html.F();
+}
+
+@section body {
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("产能分析").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("Process")
+    //.AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+    .AllowPaging(true).PageSize(20).IsDatabasePaging(true).OnPageIndexChanged(Url.Action("Capa_PageIndexChanged"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"), new Parameter("Deportment", "F.ui.Deportment.getText()"))
+            .Toolbars(
+                F.Toolbar().ID("Toolbar1")
+                    .Items(
+                        F.DatePicker()
+                            .Required(true)
+                            .DateFormatString("yyyy-MM-dd")
+                            .Label("年月")
+                            .EmptyText("请选择年月")
+                            .ID("yearMonth")
+                            .SelectedDate(DateTime.Now),
+                        F.DropDownList().ID("Deportment")
+                            .Label("部门")
+                            .Items(
+                                ViewBag.Deportment
+                            ),
+                        F.Button()
+                            .ID("QueryButton")
+                            .Text("查询")
+                            .OnClick(Url.Action("Capa"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"), new Parameter("Deportment", "F.ui.Deportment.getText()"))
+                    )
+                )
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("单位").ColumnID("Unit").DataField("Unit").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxUnit").Required(true)
+                    ),
+                F.RenderField().HeaderText("工序").ColumnID("Process").DataField("Process").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxProcess").Required(true)
+                    ),
+                F.RenderField().HeaderText("经营体").ColumnID("Venture").DataField("Venture").Width(120)
+                    .Editor(
+                        F.TextBox().ID("tbxVenture").Required(true)
+                    ),
+                F.RenderField().HeaderText("计划定额").ColumnID("Plan").DataField("Plan").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("nbxPlan")
+                    ),
+                F.RenderField().HeaderText("实际定额").ColumnID("Real").DataField("Real").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("nbxReal")
+                    )
+
+            )
+            .RecordCount(ViewBag.RecordCount).DataSource(Model)
+    ) 
+}
+@section script {
+    <script>
+        F.ready(function () {
+
+        });
+
+        function openNewTab(name,url) {
+            parent.addExampleTab({
+                id: 'new_product_tab',
+                iframeUrl: url,
+                title: name,
+                refreshWhenExist: true
+            });
+        }
+    </script>
+}

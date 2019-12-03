@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MoJuDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CapCompleteRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAB_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="Venture" Type="varchar" MaxLength="50" />
+          <Property Name="Operation" Type="varchar" MaxLength="50" />
+          <Property Name="CompleteRate" Type="float" />
+          <Property Name="PromptnessRate" Type="float" />
+          <Property Name="PassRate" Type="float" />
+          <Property Name="PlanDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="OtdDpmo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAB_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="OTD" Type="float" />
+          <Property Name="DPMO" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Ncr" Type="float" />
+          <Property Name="HourYearComplete" Type="float" />
+          <Property Name="HourMonthPlan" Type="float" />
+          <Property Name="HourMonthComplete" Type="float" />
+          <Property Name="JGGSPlan" Type="float" />
+          <Property Name="JGGSComplete" Type="float" />
+          <Property Name="CJGDWPlan" Type="float" />
+          <Property Name="CJGDWComplete" Type="float" />
+          <Property Name="JJGDWPlan" Type="float" />
+          <Property Name="JJGDWComplete" Type="float" />
+          <Property Name="OTDComplete" Type="float" />
+          <Property Name="DPMOCompletefloat" Type="float" />
+          <Property Name="Odds" Type="float" />
+          <Property Name="OddsComplete" Type="float" />
+        </EntityType>
+        <EntityType Name="ProductManage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FAB_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="varchar" MaxLength="50" />
+          <Property Name="MACH_TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="PRODUCT_TYPE" Type="varchar" MaxLength="100" />
+          <Property Name="MACH_PRO" Type="varchar" MaxLength="50" />
+          <Property Name="MATERIAL_ID" Type="varchar" MaxLength="50" />
+          <Property Name="WEIGHT" Type="float" />
+          <Property Name="PROCUT_QUOTA" Type="float" />
+          <Property Name="OUTPUT_VALUE" Type="float" />
+          <Property Name="DELIVERY_DATE" Type="datetime" />
+          <Property Name="PLAN_START" Type="datetime" />
+          <Property Name="PLAN_END" Type="datetime" />
+          <Property Name="PLAN_DATE" Type="datetime" />
+          <Property Name="CREATE_TIME" Type="datetime" />
+          <Property Name="CREATE_USER" Type="varchar" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VENTURENAME" Type="varchar" MaxLength="50" />
+          <Property Name="OPERATIONNAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductQua">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAB_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="VENTURENAME" Type="varchar" MaxLength="50" />
+          <Property Name="OPERATION_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="TOTALQTY" Type="int" />
+          <Property Name="QUAQTY" Type="int" />
+          <Property Name="DATE" Type="datetime" />
+          <Property Name="RATE" Type="float" />
+        </EntityType>
+        <EntityType Name="SaleManage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="PLAN_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MANAGE_PLAN" Type="float" />
+          <Property Name="SALE_PLAN" Type="float" />
+          <Property Name="SALE_FINISH" Type="float" />
+          <Property Name="RSPO_DEPT" Type="varchar" MaxLength="200" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="SellYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimelyRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Week1" Type="float" />
+          <Property Name="Week2" Type="float" />
+          <Property Name="Week3" Type="float" />
+          <Property Name="Week4" Type="float" />
+          <Property Name="Month1" Type="float" />
+          <Property Name="RealPlan" Type="float" />
+          <Property Name="PlanDate" Type="datetime2" Precision="7" />
+          <Property Name="FAB_NAME" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UserInfor">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="LoginCount" Type="int" Nullable="false" />
+          <Property Name="DepartNum" Type="varchar" MaxLength="50" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="LogoutTime" Type="datetime" />
+          <Property Name="IpInfor" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VentureCapa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAB_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="VENTURENAME" Type="varchar" MaxLength="50" />
+          <Property Name="OPERATIONNAME" Type="varchar" MaxLength="50" />
+          <Property Name="PROCUT_QUOTA" Type="float" />
+          <Property Name="PROCUT_QUOTA_WEEK" Type="float" />
+          <Property Name="PROCUT_QUOTA_MONTH" Type="float" />
+        </EntityType>
+        <EntityType Name="YearPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Factory" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="YearPlan" Type="float" Nullable="false" />
+          <Property Name="SellYearPlan" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MoJuDataModelStoreContainer">
+          <EntitySet Name="CapCompleteRate" EntityType="Self.CapCompleteRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtdDpmo" EntityType="Self.OtdDpmo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductManage" EntityType="Self.ProductManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductQua" EntityType="Self.ProductQua" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleManage" EntityType="Self.SaleManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimelyRate" EntityType="Self.TimelyRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfor" EntityType="Self.UserInfor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VentureCapa" EntityType="Self.VentureCapa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YearPlan" EntityType="Self.YearPlan" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MoJuDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ProductManage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FAB_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MACH_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MACH_PRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MATERIAL_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WEIGHT" Type="Double" />
+          <Property Name="PROCUT_QUOTA" Type="Double" />
+          <Property Name="OUTPUT_VALUE" Type="Double" />
+          <Property Name="DELIVERY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PLAN_START" Type="DateTime" Precision="3" />
+          <Property Name="PLAN_END" Type="DateTime" Precision="3" />
+          <Property Name="PLAN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VENTURENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATIONNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserInfor">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginCount" Type="Int32" Nullable="false" />
+          <Property Name="DepartNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LogoutTime" Type="DateTime" Precision="3" />
+          <Property Name="IpInfor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SaleManage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="PLAN_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MANAGE_PLAN" Type="Double" />
+          <Property Name="SALE_PLAN" Type="Double" />
+          <Property Name="SALE_FINISH" Type="Double" />
+          <Property Name="RSPO_DEPT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SellYear" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MoJuDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProductManage" EntityType="Self.ProductManage" />
+          <EntitySet Name="UserInfor" EntityType="Self.UserInfor" />
+          <EntitySet Name="SaleManage" EntityType="Self.SaleManage" />
+          <EntitySet Name="YearPlan" EntityType="MoJuDataModel.YearPlan" />
+          <EntitySet Name="ProductQua" EntityType="MoJuDataModel.ProductQua" />
+          <EntitySet Name="VentureCapa" EntityType="MoJuDataModel.VentureCapa" />
+          <EntitySet Name="CapCompleteRate" EntityType="MoJuDataModel.CapCompleteRate" />
+          <EntitySet Name="TimelyRate" EntityType="MoJuDataModel.TimelyRate" />
+          <EntitySet Name="OtdDpmo" EntityType="MoJuDataModel.OtdDpmo" />
+        </EntityContainer>
+        <EntityType Name="YearPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Factory" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="YearPlan1" Type="Double" Nullable="false" />
+          <Property Name="SellYearPlan" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductQua">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FAB_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VENTURENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATION_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TOTALQTY" Type="Int32" />
+          <Property Name="QUAQTY" Type="Int32" />
+          <Property Name="DATE" Type="DateTime" Precision="3" />
+          <Property Name="RATE" Type="Double" />
+        </EntityType>
+        <EntityType Name="VentureCapa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FAB_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VENTURENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATIONNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROCUT_QUOTA" Type="Double" />
+          <Property Name="PROCUT_QUOTA_WEEK" Type="Double" />
+          <Property Name="PROCUT_QUOTA_MONTH" Type="Double" />
+        </EntityType>
+        <EntityType Name="CapCompleteRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FAB_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Venture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompleteRate" Type="Double" />
+          <Property Name="PromptnessRate" Type="Double" />
+          <Property Name="PassRate" Type="Double" />
+          <Property Name="PlanDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="TimelyRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Week1" Type="Double" />
+          <Property Name="Week2" Type="Double" />
+          <Property Name="Week3" Type="Double" />
+          <Property Name="Week4" Type="Double" />
+          <Property Name="Month1" Type="Double" />
+          <Property Name="RealPlan" Type="Double" />
+          <Property Name="PlanDate" Type="DateTime" Precision="7" />
+          <Property Name="FAB_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OtdDpmo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAB_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OTD" Type="Double" />
+          <Property Name="DPMO" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Ncr" Type="Double" />
+          <Property Name="HourYearComplete" Type="Double" />
+          <Property Name="HourMonthPlan" Type="Double" />
+          <Property Name="HourMonthComplete" Type="Double" />
+          <Property Name="JGGSPlan" Type="Double" />
+          <Property Name="JGGSComplete" Type="Double" />
+          <Property Name="CJGDWPlan" Type="Double" />
+          <Property Name="CJGDWComplete" Type="Double" />
+          <Property Name="JJGDWPlan" Type="Double" />
+          <Property Name="JJGDWComplete" Type="Double" />
+          <Property Name="OTDComplete" Type="Double" />
+          <Property Name="DPMOCompletefloat" Type="Double" />
+          <Property Name="Odds" Type="Double" />
+          <Property Name="OddsComplete" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MoJuDataModelStoreContainer" CdmEntityContainer="MoJuDataEntities">
+          <EntitySetMapping Name="ProductManage">
+            <EntityTypeMapping TypeName="MoJuDataModel.ProductManage">
+              <MappingFragment StoreEntitySet="ProductManage">
+                <ScalarProperty Name="OPERATIONNAME" ColumnName="OPERATIONNAME" />
+                <ScalarProperty Name="VENTURENAME" ColumnName="VENTURENAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FAB_NAME" ColumnName="FAB_NAME" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="MACH_TYPE" ColumnName="MACH_TYPE" />
+                <ScalarProperty Name="PRODUCT_TYPE" ColumnName="PRODUCT_TYPE" />
+                <ScalarProperty Name="MACH_PRO" ColumnName="MACH_PRO" />
+                <ScalarProperty Name="MATERIAL_ID" ColumnName="MATERIAL_ID" />
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="PROCUT_QUOTA" ColumnName="PROCUT_QUOTA" />
+                <ScalarProperty Name="OUTPUT_VALUE" ColumnName="OUTPUT_VALUE" />
+                <ScalarProperty Name="DELIVERY_DATE" ColumnName="DELIVERY_DATE" />
+                <ScalarProperty Name="PLAN_START" ColumnName="PLAN_START" />
+                <ScalarProperty Name="PLAN_END" ColumnName="PLAN_END" />
+                <ScalarProperty Name="PLAN_DATE" ColumnName="PLAN_DATE" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="CREATE_USER" ColumnName="CREATE_USER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfor">
+            <EntityTypeMapping TypeName="MoJuDataModel.UserInfor">
+              <MappingFragment StoreEntitySet="UserInfor">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+                <ScalarProperty Name="DepartNum" ColumnName="DepartNum" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+                <ScalarProperty Name="IpInfor" ColumnName="IpInfor" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleManage">
+            <EntityTypeMapping TypeName="MoJuDataModel.SaleManage">
+              <MappingFragment StoreEntitySet="SaleManage">
+                <ScalarProperty Name="SellYear" ColumnName="SellYear" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PLAN_DATE" ColumnName="PLAN_DATE" />
+                <ScalarProperty Name="MANAGE_PLAN" ColumnName="MANAGE_PLAN" />
+                <ScalarProperty Name="SALE_PLAN" ColumnName="SALE_PLAN" />
+                <ScalarProperty Name="SALE_FINISH" ColumnName="SALE_FINISH" />
+                <ScalarProperty Name="RSPO_DEPT" ColumnName="RSPO_DEPT" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YearPlan">
+            <EntityTypeMapping TypeName="MoJuDataModel.YearPlan">
+              <MappingFragment StoreEntitySet="YearPlan">
+                <ScalarProperty Name="SellYearPlan" ColumnName="SellYearPlan" />
+                <ScalarProperty Name="YearPlan1" ColumnName="YearPlan" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Factory" ColumnName="Factory" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductQua">
+            <EntityTypeMapping TypeName="MoJuDataModel.ProductQua">
+              <MappingFragment StoreEntitySet="ProductQua">
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="QUAQTY" ColumnName="QUAQTY" />
+                <ScalarProperty Name="TOTALQTY" ColumnName="TOTALQTY" />
+                <ScalarProperty Name="OPERATION_NAME" ColumnName="OPERATION_NAME" />
+                <ScalarProperty Name="VENTURENAME" ColumnName="VENTURENAME" />
+                <ScalarProperty Name="FAB_NAME" ColumnName="FAB_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VentureCapa">
+            <EntityTypeMapping TypeName="MoJuDataModel.VentureCapa">
+              <MappingFragment StoreEntitySet="VentureCapa">
+                <ScalarProperty Name="PROCUT_QUOTA_MONTH" ColumnName="PROCUT_QUOTA_MONTH" />
+                <ScalarProperty Name="PROCUT_QUOTA_WEEK" ColumnName="PROCUT_QUOTA_WEEK" />
+                <ScalarProperty Name="PROCUT_QUOTA" ColumnName="PROCUT_QUOTA" />
+                <ScalarProperty Name="OPERATIONNAME" ColumnName="OPERATIONNAME" />
+                <ScalarProperty Name="VENTURENAME" ColumnName="VENTURENAME" />
+                <ScalarProperty Name="FAB_NAME" ColumnName="FAB_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CapCompleteRate">
+            <EntityTypeMapping TypeName="MoJuDataModel.CapCompleteRate">
+              <MappingFragment StoreEntitySet="CapCompleteRate">
+                <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
+                <ScalarProperty Name="PassRate" ColumnName="PassRate" />
+                <ScalarProperty Name="PromptnessRate" ColumnName="PromptnessRate" />
+                <ScalarProperty Name="CompleteRate" ColumnName="CompleteRate" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="Venture" ColumnName="Venture" />
+                <ScalarProperty Name="FAB_NAME" ColumnName="FAB_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimelyRate">
+            <EntityTypeMapping TypeName="MoJuDataModel.TimelyRate">
+              <MappingFragment StoreEntitySet="TimelyRate">
+                <ScalarProperty Name="FAB_NAME" ColumnName="FAB_NAME" />
+                <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
+                <ScalarProperty Name="RealPlan" ColumnName="RealPlan" />
+                <ScalarProperty Name="Month1" ColumnName="Month1" />
+                <ScalarProperty Name="Week4" ColumnName="Week4" />
+                <ScalarProperty Name="Week3" ColumnName="Week3" />
+                <ScalarProperty Name="Week2" ColumnName="Week2" />
+                <ScalarProperty Name="Week1" ColumnName="Week1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtdDpmo">
+            <EntityTypeMapping TypeName="MoJuDataModel.OtdDpmo">
+              <MappingFragment StoreEntitySet="OtdDpmo">
+                <ScalarProperty Name="OddsComplete" ColumnName="OddsComplete" />
+                <ScalarProperty Name="Odds" ColumnName="Odds" />
+                <ScalarProperty Name="DPMOCompletefloat" ColumnName="DPMOCompletefloat" />
+                <ScalarProperty Name="OTDComplete" ColumnName="OTDComplete" />
+                <ScalarProperty Name="JJGDWComplete" ColumnName="JJGDWComplete" />
+                <ScalarProperty Name="JJGDWPlan" ColumnName="JJGDWPlan" />
+                <ScalarProperty Name="CJGDWComplete" ColumnName="CJGDWComplete" />
+                <ScalarProperty Name="CJGDWPlan" ColumnName="CJGDWPlan" />
+                <ScalarProperty Name="JGGSComplete" ColumnName="JGGSComplete" />
+                <ScalarProperty Name="JGGSPlan" ColumnName="JGGSPlan" />
+                <ScalarProperty Name="HourMonthComplete" ColumnName="HourMonthComplete" />
+                <ScalarProperty Name="HourMonthPlan" ColumnName="HourMonthPlan" />
+                <ScalarProperty Name="HourYearComplete" ColumnName="HourYearComplete" />
+                <ScalarProperty Name="Ncr" ColumnName="Ncr" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DPMO" ColumnName="DPMO" />
+                <ScalarProperty Name="OTD" ColumnName="OTD" />
+                <ScalarProperty Name="FAB_NAME" ColumnName="FAB_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

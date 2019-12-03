@@ -1,0 +1,168 @@
+﻿@model List<FineUIMvc.EmptyProject.Models.Model.MonthAnalyze>
+
+@{
+    ViewBag.Title = "Index";
+    var F = @Html.F();
+
+}
+
+@section body {
+
+
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("月分析报表").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("PRODUCT_NAME")
+                            //.AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+                            .Toolbars(
+                                F.Toolbar().ID("Toolbar1")
+                                    .Items(
+                                        F.DatePicker()
+                                            .Required(true)
+                                            .DateFormatString("yyyy-MM")
+                                            .Label("开始年月")
+                                            .EmptyText("请选择年月")
+                                            .ID("yearMonth")
+                                            .SelectedDate(DateTime.Now),
+                                        F.DatePicker()
+                                            .Required(true)
+                                            .DateFormatString("yyyy-MM")
+                                            .Label("结束年月")
+                                            .EmptyText("请选择年月")
+                                            .ID("ToYearMonth")
+                                            .SelectedDate(DateTime.Now),
+                                        F.Button()
+                                            .ID("QueryButton")
+                                            .Text("查询")
+                                            .OnClick(Url.Action("MonthAnalyze"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"), new Parameter("ToYearMonth", "F.ui.ToYearMonth.getText()"))
+                                    )
+                                )
+                            .Columns(
+                                F.RowNumberField(),
+                                F.RenderField().HeaderText("检查内容").ColumnID("Content").DataField("Content").Width(120),
+                                F.RenderField().HeaderText("制造事业部").ColumnID("ZZSYB").DataField("ZZSYB").Width(120),
+                                F.RenderField().HeaderText("精工工厂").ColumnID("JGGC").DataField("JGGC").Width(120),
+                                F.RenderField().HeaderText("加工工厂").ColumnID("JAGGC").DataField("JAGGC").Width(120),
+                                F.RenderField().HeaderText("模具工厂").ColumnID("MJGC").DataField("MJGC").Width(120),
+                                F.RenderField().HeaderText("智能设备工厂").ColumnID("ZNSBGC").DataField("ZNSBGC").Width(120),
+                                F.RenderField().HeaderText("智能机器").ColumnID("ZNJQ").DataField("ZNJQ").Width(120)
+                            )
+                            .DataSource(Model)
+    )
+
+    @(F.Panel()
+                    .Title("图表")
+                    .ShowBorder(true)
+                    .EnableCollapse(true)
+                    .Layout(LayoutType.VBox)
+                    .ShowHeader(true)
+                    .BoxConfigChildMargin("0 0 5 0")
+                    .BodyPadding(5)
+                    .Content("<div id=\"chart1\" style=\"height:400px; width:100 %;\"></div>")
+    )
+}
+@section script {
+    <script src="~/res/js/echarts.js"></script>
+    <script>
+        F.ready(function () {
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('chart1'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '月分析报表'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['年/月计划','月计划','月实际','月完成率']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ["制造事业部", "精工工厂", "加工工厂", "模具工厂", "智能设备工厂", "智能机器"],
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '销量',
+                        axisLabel: {
+                            formatter: '{value}'
+                        }
+                    },
+                    {
+                        type: 'value',
+                        name: '完成率',
+                        min: 0,
+                        max: 100,
+                        interval: 10,
+                        axisLabel: {
+                            formatter: '{value}%'
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: '年/月计划',
+                        type: 'bar',
+                        data: [
+                                @Model[0].ZZSYB,
+                                @Model[0].JGGC,
+                                @Model[0].JAGGC   ,
+                                @Model[0].MJGC,
+                                @Model[0].ZNSBGC ,
+                                @Model[0].ZNJQ,
+                              ]
+                    },
+                    {
+                        name: '月计划',
+                        type: 'bar',
+                        data:
+                            [
+                                @Model[1].ZZSYB ,
+                                @Model[1].JGGC,
+                                @Model[1].JAGGC,
+                                @Model[1].MJGC,
+                                @Model[1].ZNSBGC,
+                                @Model[1].ZNJQ,
+                            ]
+                    },
+                    {
+                        name: '月实际',
+                        type: 'bar',
+                        data:
+                            [
+                                @Model[2].ZZSYB ,
+                                @Model[2].JGGC,
+                                @Model[2].JAGGC ,
+                                @Model[2].MJGC ,
+                                @Model[2].ZNSBGC ,
+                                @Model[2].ZNJQ ,
+                            ]
+                    },
+                    {
+                        name: '月完成率',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data:
+                            [
+                                @Model[3].ZZSYB ,
+                                @Model[3].JGGC ,
+                                @Model[3].JAGGC ,
+                                @Model[3].MJGC  ,
+                                @Model[3].ZNSBGC,
+                                @Model[3].ZNJQ,
+                            ]
+                    }
+
+                ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        });
+
+    </script>
+}

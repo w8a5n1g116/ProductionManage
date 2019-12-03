@@ -1,0 +1,183 @@
+﻿@model IEnumerable<FineUIMvc.EmptyProject.Models.OtdDpmo>
+
+@{
+    ViewBag.Title = "Index";
+    var F = @Html.F();
+}
+
+@section body {
+
+    @(F.Grid().IsFluid(true).CssClass("blockpanel").Title("数据调整").ShowHeader(true).ShowBorder(true).ID("Grid1").DataIDField("ID").DataTextField("FAB_NAME")
+    .AllowCellEditing(true).ClicksToEdit(1).EnableCheckBoxSelect(true)
+    .AllowPaging(true).PageSize(20).IsDatabasePaging(true).OnPageIndexChanged(Url.Action("Grid1_PageIndexChanged"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"))
+            .Toolbars(
+                F.Toolbar().ID("Toolbar1")
+                    .Items(
+                        F.DatePicker()
+                            .Required(true)
+                            .DateFormatString("yyyy-MM")
+                            .Label("年月")
+                            .EmptyText("请选择年月")
+                            .ID("yearMonth")
+                            .SelectedDate(DateTime.Now),
+                        F.DropDownList().ID("Deportment")
+                            .Label("工厂")
+                            .Items(
+                                ViewBag.Deportment
+                            ),
+                        F.Button()
+                            .ID("QueryButton")
+                            .Text("查询")
+                            .OnClick(Url.Action("Index"), "Grid1", new Parameter("yearMonth", "F.ui.yearMonth.getText()"), new Parameter("Deportment", "F.ui.Deportment.getText()"))
+                    ),
+                    F.Toolbar().ID("Toolbar2")
+                        .Items(
+                            F.Button()
+                                .ID("btnAdd")
+                                .Text("添加")
+                                .Listener("click", "onNewClick"),
+                            F.Button()
+                                .ID("btnSave")
+                                .Text("保存")
+                                .OnClick(Url.Action("btnSubmit_Click"), "Grid1", new Parameter("pageIndex", "F.ui.Grid1.pageIndex"), new Parameter("yearMonth", "F.ui.yearMonth.getText()")),
+                            F.Button()
+                                .ID("btnDelete")
+                                .Text("删除")
+                                .Listener("click", "onDeleteClick")
+                        )
+                )
+            .Columns(
+                F.RowNumberField(),
+                F.RenderField().HeaderText("工厂").ColumnID("FAB_NAME").DataField("FAB_NAME").Width(120)
+                    .Editor(
+                        F.DropDownList().Items(ViewBag.Deportment).ID("tbxFAB_NAME").Required(true)
+                    ),
+                F.RenderField().HeaderText("OTD计划").ColumnID("OTD").DataField("OTD").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxOTD").Required(true)
+                    ),
+                F.RenderField().HeaderText("OTD完成").ColumnID("OTDComplete").DataField("OTDComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxOTDComplete").Required(true)
+                    ),
+                F.RenderField().HeaderText("DPMO计划").ColumnID("DPMO").DataField("DPMO").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxDPMO").Required(true)
+                    ),
+                F.RenderField().HeaderText("DPMO完成").ColumnID("DPMOCompletefloat").DataField("DPMOCompletefloat").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxDPMOCompletefloat").Required(true)
+                    ),
+                F.RenderField().HeaderText("Ncr").ColumnID("Ncr").DataField("Ncr").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxNcr").Required(true)
+                    ),
+                F.RenderField().HeaderText("索赔计划").ColumnID("Odds").DataField("Odds").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxOdds").Required(true)
+                    ),
+                F.RenderField().HeaderText("索赔完成").ColumnID("OddsComplete").DataField("OddsComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxOddsComplete").Required(true)
+                    ),
+                F.RenderField().HeaderText("工时年计划完成").ColumnID("HourYearComplete").DataField("HourYearComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxHourYearComplete").Required(true)
+                    ),
+                F.RenderField().HeaderText("工时月计划").ColumnID("HourMonthPlan").DataField("HourMonthPlan").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxHourMonthPlan").Required(true)
+                    ),
+                F.RenderField().HeaderText("工时月计划完成").ColumnID("HourMonthComplete").DataField("HourMonthComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxHourMonthComplete").Required(true)
+                    ),
+                F.RenderField().HeaderText("加工工时计划").ColumnID("JGGSPlan").DataField("JGGSPlan").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("nbxJGGSPlan")
+                    ),
+                F.RenderField().HeaderText("加工工时计划完成").ColumnID("JGGSComplete").DataField("JGGSComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxJGGSComplete").Required(true)
+                    ),
+                F.RenderField().HeaderText("粗加工吨位计划").ColumnID("CJGDWPlan").DataField("CJGDWPlan").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxCJGDWPlan").Required(true)
+                    ),
+                F.RenderField().HeaderText("粗加工吨位计划完成").ColumnID("CJGDWComplete").DataField("CJGDWComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("nbxCJGDWComplete")
+                    ),
+                F.RenderField().HeaderText("精加工吨位计划").ColumnID("JJGDWPlan").DataField("JJGDWPlan").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxJJGDWPlan").Required(true)
+                    ),
+                F.RenderField().HeaderText("精加工吨位计划完成").ColumnID("JJGDWComplete").DataField("JJGDWComplete").Width(120)
+                    .Editor(
+                        F.NumberBox().ID("tbxJJGDWComplete").Required(true)
+                    ),
+                F.RenderField().HeaderText("所在年月").ColumnID("Date").DataField("Date").FieldType(FieldType.Date).Renderer(Renderer.Date).RendererArgument("yyyy-MM").Width(140)
+                    .Editor(
+                        F.DatePicker().ID("dpDate").SelectedDate(DateTime.Now).Required(true)
+                    )
+
+
+
+            )
+            .RecordCount(ViewBag.RecordCount).DataSource(Model)
+    ) 
+}
+@section script {
+    <script>
+        F.ready(function () {
+
+        });
+
+        function onNewClick(event) {
+            F.ui.Grid1.addNewRecord({
+                'FAB_NAME': '',
+                'OTD': 0,
+                'OTDComplete': 0,
+                'DPMO': 0,
+                'DPMOCompletefloat': 0,               
+                'Ncr': 0,
+                'HourYearComplete': 0,
+                'HourMonthPlan': 0,
+                'HourMonthComplete': 0,
+                'JGGSPlan': 0,
+                'JGGSComplete': 0,
+                'CJGDWPlan': 0,
+                'CJGDWComplete': 0,
+                'JJGDWPlan': 0,
+                'JJGDWComplete': 0,
+                'Date': ''
+            }, true);
+        }
+
+        function onDeleteClick(event) {
+            var grid1 = F.ui.Grid1;
+            if (!grid1.hasSelection()) {
+                F.alert('没有选中项！');
+                return;
+            }
+
+            var selectedRows = grid1.getSelectedRows();
+            F.confirm({
+                message: '你确定要删除选中的&nbsp;<b>' + selectedRows.length + '</b>&nbsp;行数据吗？',
+                target: '_top',
+                ok: function () {
+                    grid1.deleteRows(selectedRows);
+                }
+            });
+        }
+
+        function openNewTab(name,url) {
+            parent.addExampleTab({
+                id: 'new_product_tab',
+                iframeUrl: url,
+                title: name,
+                refreshWhenExist: true
+            });
+        }
+    </script>
+}

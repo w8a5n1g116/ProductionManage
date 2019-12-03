@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="74ac25fdc31247378facc2b8c87f5115" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="SapModel.View_MBEW" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SapModel.View_T_SAP_PP_MaterialMove" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SapModel.View_T_SAP_PP_ProductOrderHeader" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SapModel.View_T_SAP_PP_ProductOrderRoute" Width="1.5" PointX="6.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
